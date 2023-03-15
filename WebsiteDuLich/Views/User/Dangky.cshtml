@@ -1,0 +1,79 @@
+﻿@model WebsiteDuLich.Models.Nguoidung
+
+@{ ViewBag.Title = "Dangky";
+}
+@using BotDetect.Web.Mvc;
+<link href="@BotDetect.Web.CaptchaUrls.Absolute.LayoutStyleSheetUrl" rel="stylesheet" type="text/css" /> @{ MvcCaptcha registerCapcha = new MvcCaptcha("registerCapcha"); registerCapcha.UserInputID = "CaptchaCode";} @{ ViewBag.Title = "Register"; }
+
+<!DOCTYPE html>
+<html lang="vn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- For google icons  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <link href="~/Content/login.css" rel="stylesheet" />
+    <title>Đăng Ký</title>
+
+</head>
+
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <h2>ĐĂNG KÝ</h2>
+        @using (Html.BeginForm("Dangnhap", "User", new { returnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="lab">
+                Họ Tên
+            </div>
+            <div class="form-item">
+
+                @Html.EditorFor(model => model.Hoten, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Hoten, "", new { @class = "text-danger" })
+            </div>
+            <div class="lab">
+                Email
+            </div>
+            <div class="form-item">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+            <div class="lab">
+                Mật Khẩu
+            </div>
+            <div class="form-item">
+                @Html.EditorFor(model => model.Matkhau, new { htmlAttributes = new { type = "Password", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Matkhau, "", new { @class = "text-danger" })
+            </div>
+            <div class="lab">
+                Số Điện Thoại
+            </div>
+            <div class="form-item">
+                @Html.EditorFor(model => model.Dienthoai, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Diachi, "", new { @class = "text-danger" })
+            </div>
+            <div class="lab">
+                Mã CaptCha
+                @Html.Captcha(registerCapcha)
+            </div>
+            <div class="form-item">
+                <div>@Html.TextBox("CaptchaCode")</div>
+            </div>
+            <button type="submit">ĐĂNG KÝ</button>
+
+            @ViewBag.Fail
+        }
+        @ViewBag.Fail
+        <div>
+            @Html.ActionLink("Trở lại trang đăng nhập", "Dangnhap")
+        </div>
+    </div>
+</body>
+
+</html>

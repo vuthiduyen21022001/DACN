@@ -1,0 +1,59 @@
+﻿@model IEnumerable<WebsiteDuLich.Models.DonTour>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/ad_Layout.cshtml";
+}
+
+
+<p style="color:blue;text-align:left;font-size:32px">
+    @Html.ActionLink("Thêm Mới", "Create")
+    @Html.Raw(@Html.ActionLink("[replacetext]", "Create").ToHtmlString().Replace("[replacetext]", " <img src=\"/images/images/icons8-create-document-96.png\" height=\"45\">"))
+</p>
+<table class="table">
+    <tr>
+        <th style="border: 1px solid #A9A9A9 ; text-align:center">
+            @Html.DisplayNameFor(model => model.Nguoidung.Hoten)
+        </th>
+        <th style="border: 1px solid #A9A9A9 ; text-align:center">
+            @Html.DisplayNameFor(model => model.Nguoidung.Email)
+        </th>
+        <th style="border: 1px solid #A9A9A9 ; text-align:center">
+            @Html.DisplayNameFor(model => model.Ngaydat)
+        </th>
+        <th style="border: 1px solid #A9A9A9 ; text-align:center">
+            @Html.DisplayNameFor(model => model.Tinhtrang)
+        </th>
+        <th style="border: 1px solid #A9A9A9 ; text-align:center">
+            @Html.DisplayNameFor(model => model.Nguoidung.Diachi)
+        </th>
+        <th style="border: 1px solid #A9A9A9; text-align: center">Action</th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+
+    <td style="border: 1px solid #A9A9A9; text-align: center">
+        @Html.DisplayFor(modelItem => item.Nguoidung.Hoten)
+    </td>
+    <td style="border: 1px solid #A9A9A9; text-align: center">
+        @Html.DisplayFor(modelItem => item.Nguoidung.Email)
+    </td>
+    <td style="border: 1px solid #A9A9A9; text-align: center">
+        @item.Ngaydat
+    </td>
+    <td style="border: 1px solid #A9A9A9; text-align: center">
+        @Html.DisplayFor(modelItem => item.Tinhtrang)
+    </td>
+    <td style="border: 1px solid #A9A9A9; text-align: center">
+        @Html.DisplayFor(modelItem => item.Nguoidung.Diachi)
+    </td>
+    <td style="border: 1px solid #A9A9A9; text-align: center">
+        @Html.Raw(@Html.ActionLink("[replacetext]", "Edit", new { id = item.Madon }).ToHtmlString().Replace("[replacetext]", " <img src=\"/images/images/icons8-edit-property-48.png\" height=\"25\">"))
+        @Html.Raw(@Html.ActionLink("[replacetext]", "Details", new { id = item.Madon }).ToHtmlString().Replace("[replacetext]", " <img src=\"/images/images/icons8-view-details-48.png\" height=\"25\">"))
+        @Html.Raw(@Html.ActionLink("[replacetext]", "Delete", new { id = item.Madon }).ToHtmlString().Replace("[replacetext]", " <img src=\"/images/images/icons8-delete-document-48.png\" height=\"25\">"))
+    </td>
+</tr>
+}
+
+</table>

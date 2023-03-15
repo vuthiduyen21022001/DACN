@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<address>
+    One Microsoft Way<br />
+    Redmond, WA 98052-6399<br />
+    <abbr title="Phone">P:</abbr>
+    425.555.0100
+</address>
+
+<address>
+    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>
+
+
+<div id="body">
+    <ul id="danhMucs"></ul>
+
+    @*<form id="saveContactForm" method="post">
+            <h3>Create a new Contact</h3>
+            <p>
+                <label for="model.Id">Contact Id:</label>
+                <input type="text" name="Id" />
+            </p>
+            <p>
+                <label for="NoiDung">Contact Name:</label>
+                <input type="text" name="TenDM" />
+            </p>
+            <input type="button" id="saveContact" value="Save" />
+        </form>*@
+
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $.getJSON('/api/apiDanhMucs', function (contactsJsonPayload) {
+                $(contactsJsonPayload).each(function (i, item) {
+                    $('#danhMucs').append('<li>' + item.TenDM + item.url + '</li>');
+                });
+            });
+
+            //$('#saveContact').click(function () {
+            //    $.post("api/apiDanhMucs",
+            //        $("#saveContactForm").serialize(),
+            //        function (value) {
+            //            $('#danhMucs').append('<li>' + value.TenDM + '</li>');
+            //        },
+            //        "json"
+            //    );
+            //});
+
+        });
+    </script>
+}
+
+
+
+<h2>Index</h2>
+
+<script src="~/ckfinder/ckfinder.js"></script>
+
+<input id="link" type="text" />
+
+<button type="button" onclick="upload();">Upload hình ảnh</button>
+
+<script>
+
+    function upload() {
+
+        var finder = new CKFinder();
+
+        finder.selectActionFunction = function (fileUrl) {
+
+            $('#link').val(fileUrl);
+
+        }
+
+        finder.popup();
+
+    }
+
+</script>

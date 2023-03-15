@@ -1,0 +1,128 @@
+﻿@model WebsiteDuLich.Models.EmailModel
+
+@{
+    ViewBag.Title = "SendMail";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Mail</title>
+    <style type="text/css">
+        body {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+
+        table th, table td {
+            padding: 5px;
+        }
+    </style>
+    <link href="~/clienttemplate/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="~/clienttemplate/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="~/clienttemplate/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="~/clienttemplate/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">GMAIL</h6>
+               
+            </div>
+            @using (Html.BeginForm("SendMail", "Mail", FormMethod.Post, new
+            {
+                enctype =
+                "multipart/form-data"
+            }))
+            {
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="contact-form bg-white" style="padding: 30px;">
+                            <div id="success"></div>
+                            <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                                <div class="form-row">
+                                    <div class="control-group col-sm-6 ">
+                                        Gửi tới<br />
+                                        @Html.TextBoxFor(model => model.To) 
+                                    </div>
+                                    <br />
+                                    <div class="control-group col-sm-6">
+                                        Chủ đề<br />
+                                        @Html.TextBoxFor(model => model.Subject)
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="form-row">
+                                    <div class="control-group col-sm-6 ">
+                                        Mail gửi<br />
+                                        @Html.TextBoxFor(model => model.Email)
+                                    </div>
+                                    <br />
+                                    <div class="control-group col-sm-6">
+                                        Mật khẩu<br />
+                                        @Html.TextBoxFor(model => model.Password, new { type = "password" }) <br />
+                                    </div>
+                                </div>
+                                <div class="control-group" style="margin-top:30px">
+                                    Nội dung
+                                    @*@Html.TextBoxFor(model => model.Body)*@
+                                    <textarea class="form-control py-3 px-4" id="Body" name="Body" rows="5">
+
+                                </textarea>
+                                </div>
+                                <div class="control-group col-sm-6">
+                                    file đính kèm:
+                                    @Html.TextBoxFor(model => model.Attchment, new { type = "file" }) <br />
+                                </div>
+                                <br />
+                                <div class="text-center">
+                                    <input type="submit" value="Gửi" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                    <div>
+                        @Html.ActionLink("Trở lại", "Index", "PhanQuyens")
+                    </div>
+                <br />
+                <span style="color:green">@ViewBag.Message</span>
+            }
+            </div>
+        </div>
+            <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+            <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+            <!-- JavaScript Libraries -->
+            <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+            <script src="~/clienttemplate/lib/easing/easing.min.js"></script>
+            <script src="~/clienttemplate/lib/owlcarousel/owl.carousel.min.js"></script>
+            <script src="~/clienttemplate/lib/tempusdominus/js/moment.min.js"></script>
+            <script src="~/clienttemplate/lib/tempusdominus/js/moment-timezone.min.js"></script>
+            <script src="~/clienttemplate/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+            <!-- Contact Javascript File -->
+            <script src="~/clienttemplate/mail/jqBootstrapValidation.min.js"></script>
+            <script src="~/clienttemplate/mail/contact.js"></script>
+        </body>
+
+</html>
+

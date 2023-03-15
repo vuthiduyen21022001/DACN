@@ -1,0 +1,80 @@
+﻿@model IEnumerable<WebsiteDuLich.Models.DanhMuc>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/ad_Layout.cshtml";
+}
+
+<p style="color:blue;text-align:left;font-size:32px">
+    @Html.ActionLink("Thêm Mới", "Create")
+    @Html.Raw(@Html.ActionLink("[replacetext]", "Create").ToHtmlString().Replace("[replacetext]", " <img src=\"/images/images/icons8-create-document-96.png\" height=\"45\">"))
+    <br />
+</p>
+<table class="table">
+    <tr>
+        <th style="border: 1px solid #A9A9A9;text-align:center">
+            Tên danh mục
+        </th>
+        <th style="border: 1px solid #A9A9A9; text-align: center">
+            Action
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="border: 1px solid #A9A9A9; text-align: center">
+                @Html.DisplayFor(modelItem => item.TenDM)
+            </td>
+            <td style="border: 1px solid #A9A9A9; text-align: center">
+                @Html.Raw(@Html.ActionLink("[replacetext]", "Edit", new { id = item.Id }).ToHtmlString().Replace("[replacetext]", " <img src=\"/images/images/icons8-edit-property-48.png\" height=\"25\">"))
+                @Html.Raw(@Html.ActionLink("[replacetext]", "Details", new { id = item.Id }).ToHtmlString().Replace("[replacetext]", " <img src=\"/images/images/icons8-view-details-48.png\" height=\"25\">"))
+                @Html.Raw(@Html.ActionLink("[replacetext]", "Delete", new { id = item.Id }).ToHtmlString().Replace("[replacetext]", " <img src=\"/images/images/icons8-delete-document-48.png\" height=\"25\">"))
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+
+@*<div id="body">
+        <ul id="danhMucs"></ul>
+
+        <form id="saveContactForm" method="post">
+                <h3>Create a new Contact</h3>
+                <p>
+                    <label for="model.Id">Contact Id:</label>
+                    <input type="text" name="Id" />
+                </p>
+                <p>
+                    <label for="NoiDung">Contact Name:</label>
+                    <input type="text" name="TenDM" />
+                </p>
+                <input type="button" id="saveContact" value="Save" />
+            </form>
+
+    </div>
+
+    @section scripts{
+        <script type="text/javascript">
+            $(function () {
+                $.getJSON('/api/apiDanhMucs', function (contactsJsonPayload) {
+                    $(contactsJsonPayload).each(function (i, item) {
+                        $('#danhMucs').append('<li>' + item.TenDM + item.url +  '</li>');
+                    });
+                });
+
+                //$('#saveContact').click(function () {
+                //    $.post("api/apiDanhMucs",
+                //        $("#saveContactForm").serialize(),
+                //        function (value) {
+                //            $('#danhMucs').append('<li>' + value.TenDM + '</li>');
+                //        },
+                //        "json"
+                //    );
+                //});
+
+            });
+        </script>
+    }*@

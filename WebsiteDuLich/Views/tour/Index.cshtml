@@ -1,0 +1,157 @@
+﻿
+@model PagedList.IPagedList<WebsiteDuLich.Models.Tour>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <title>TOUR</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+
+
+    <div class="container-fluid booking mt-5 pb-5">
+        <div class="container pb-5">
+            <div class="bg-light shadow" style="padding: 30px;">
+                @using (Html.BeginForm())
+                {
+                    <div class="row">
+                        <div class="col-md-6">
+                            <b style="font-size:14pt">Tìm kiếm:</b> @Html.TextBox("SearchString")
+                            <button> <img src="~/images/images/icons8-search-48.png" height="20" width="20" /> </button>
+
+                        </div>
+                    </div>
+                    <hr />
+                }
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid booking mt-5 pb-5">
+        <div class="container pb-5">
+            <div class="bg-light shadow" style="padding: 30px;">
+                @{ Html.RenderAction("Index", "danhMuc");}
+            </div>
+        </div>
+    </div>
+
+    <!-- Danh sach tour moi -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+
+            @{Html.RenderAction("dstourmoi");}
+        </div>
+    </div>
+
+    <!-- danh sach tour -->
+    <div class="container-fluid py-3">
+        <div class="container pt-3 pb-3">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Đặt tour</h6>
+                <h1>TOUR DU LICH</h1>
+            </div>
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-4 col-md-6  mb-3 " style="list-style-type: none;">
+                        <div class="package-item bg-white mb-2">
+                            <img class="img-fluid" src="@item.HinhAnhTour" alt="Ảnh đại diện" style="min-width: 330px; max-width: 340px; max-height: 169px ">
+                            <div class="p-4">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>@item.NgayDang.ToString("dd/MM/yyyy")</small>
+                                    <small>
+                                        <i style="color:red">Giảm </i>
+                                        <small class="donvi m-0">
+                                            @item.GiamGia
+                                        </small>
+                                        <u>đ</u>
+                                    </small>
+
+                                </div>
+                                <a class="h5 text-decoration-none" href="@Url.Action("Details", "tour", new { id=item.Id })">@item.TenTour</a>
+
+                                <a class="h7 text-decoration-none" href="@Url.Action("Details", "tour", new { id=item.Id })">@Html.Raw(item.LichTrinh)</a>
+                                <div class="border-top mt-4 pt-3">
+                                    <div style="font-size:12px">
+                                        <del class="donvi">@item.GiaChuaKM</del>
+                                        <u>đ</u>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <span style="color:red">
+                                            <span class="m-0 donvi">@item.Giaban</span>
+                                            <u>đ</u>
+                                        </span>
+
+                                        <div class="DatMua">
+                                            <a class="btn btn-success" href="@Url.Action("ThemDatTour", "datTour", new { @id = item.Id, @strURL = Request.Url.ToString() })">
+                                                Đặt Tour
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div style="text-align:right">
+                Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="~/clienttemplate/lib/easing/easing.min.js"></script>
+    <script src="~/clienttemplate/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="~/clienttemplate/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="~/clienttemplate/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="~/clienttemplate/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="~/clienttemplate/mail/jqBootstrapValidation.min.js"></script>
+    <script src="~/clienttemplate/mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="~/clienttemplate/js/main.js"></script>
+    <script src="~/Scripts/donvitien.js"></script>
+
+
+</body>
+
+</html>

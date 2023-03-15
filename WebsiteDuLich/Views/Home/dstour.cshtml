@@ -1,0 +1,32 @@
+﻿@model IEnumerable<WebsiteDuLich.Models.Tour>
+
+@{
+    ViewBag.Title = "dstour";
+}
+
+<div class="container-fluid py-5">
+    <div class="container pt-5 pb-3">
+        <div class="text-center mb-3 pb-3">
+            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Điểm đến</h6>
+            <h2>Khám phá điểm đến mới nhất</h2>
+        </div>
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="destination-item position-relative overflow-hidden mb-2">
+                        <img class="img-fluid" src="@item.HinhAnhTour" alt="" style="width:309px;height:221px;">>
+                        <a class="destination-overlay text-white text-decoration-none" href="@Url.Action("Details", "tour", new { id=item.Id })">
+                            <h5 class="text-white" style="text-align:center">@item.TenTour</h5>
+                            <span>
+                                <span class="donvi">@item.Giaban</span>
+                                <u>đ</u>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+﻿@model WebsiteDuLich.Models.CTDonTour
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/ad_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CTDonTour</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DonTour.CustomerId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonTour.CustomerId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dongia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dongia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Thanhtien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Thanhtien)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

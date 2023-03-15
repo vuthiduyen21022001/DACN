@@ -1,0 +1,177 @@
+﻿@model WebsiteDuLich.Models.Tour
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/ad_Layout.cshtml";
+}
+
+<h2>Xóa</h2>
+
+<h3>Bạnc có chắc chắn muốn xóa?</h3>
+<div>
+    <h4>Tour</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DanhMuc.TenDM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DanhMuc.TenDM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenTour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenTour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.url)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Giaban)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Giaban)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaChuaKM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaChuaKM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiamGia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiamGia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TinhTrang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinhTrang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayDang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LichTrinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LichTrinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LichKhoiHanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LichKhoiHanh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaBaoGom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaBaoGom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaKBaoGom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaKBaoGom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhuThu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhuThu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HoanHuy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoanHuy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LuuY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LuuY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HinhAnhTour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HinhAnhTour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HinhAnhTour1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HinhAnhTour1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HinhAnhTour2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HinhAnhTour2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HinhAnhTour3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HinhAnhTour3)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="Xóa" class="btn btn-default" /> <br />
+    @Html.Raw(@Html.ActionLink("[replacetext]", "Index").ToHtmlString().Replace("[replacetext]", " <img src=\"/images/images/icons8-back-arrow-96.png\" height=\"45\">"))
+</div>
+    }
+</div>

@@ -1,0 +1,147 @@
+﻿@model WebsiteDuLich.Models.Tour
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid py-2">
+    <div class="container pt-3">
+        <div class="row">
+            <div class="col-lg-6" style="min-height: 300px; max-height: 300px">
+                <div class="position-relative h-100">
+                    <img class="position-absolute w-100 h-100" src="@Html.DisplayFor(model => model.HinhAnhTour)" style="object-fit: cover;">
+                </div>
+            </div>
+            <div class="col-lg-6 pt-2 pb-lg-5">
+                <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
+                    <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Tour Du Lịch</h6>
+                    <h2 class="text-primary text-uppercase">@Html.DisplayFor(model => model.TenTour)</h2>
+                    <p>
+                        <strong class="donvi">
+                            @Html.DisplayFor(model => model.Giaban)
+                        </strong>
+                        <u>đ</u>
+                    </p>
+                </div>
+
+            </div>
+            <div class="bg-white mb-3" style="padding: 30px; text-align:justify">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Thông Tin Tour</h6> <br />
+                <h1 class="mb-3">@Html.DisplayFor(model => model.TenTour)</h1><br />
+                <img class="img-fluid w-50 float-right ml-4 mb-2" src="@Html.DisplayFor(model => model.HinhAnhTour1)">
+                <div class="media mb-4">
+
+                    <div class="media-body">
+                        <h6 style="text-align:right"><small class="fa fa-calendar-alt text-primary"><i> @Model.NgayDang.ToString("dd/MM/yyyy")</i></small></h6>
+                        <p style="font-size:18px">
+                            <table style="font-family: arial, sans-serif; border-collapse: collapse; width: 100%;">
+
+                                <tr>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px; ">
+                                        <b>Mã:</b>
+                                    </td>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px; ">
+                                        <span>
+                                            @Html.DisplayFor(model => model.Id)
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px; ">
+                                        <b>Thời gian:</b>
+                                    </td>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px; ">
+                                        <span>
+                                            @Html.Raw(Model.LichTrinh)
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px; ">
+                                        <b>Tình trạng:</b>
+                                    </td>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px; ">
+                                        <span>
+                                            @Html.DisplayFor(model => model.TinhTrang)
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px; ">
+                                        <b>Giá gốc:</b>
+                                    </td>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px; ">
+                                        <span class="donvi">
+                                            @Html.DisplayFor(model => model.GiaChuaKM)
+                                        </span>
+                                        <u>đ</u>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px; ">
+                                        <b>Giảm giá:</b>
+                                    </td>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px; ">
+                                        <span class="donvi">
+                                            @Html.DisplayFor(model => model.GiamGia)
+                                        </span>
+                                        <u>đ</u>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px; ">
+                                        <b>Giá:</b>
+                                    </td>
+                                    <td style="border: 1px solid #dddddd; text-align: left; padding: 8px; ">
+                                        <strong class="donvi">
+                                            @Html.DisplayFor(model => model.Giaban)
+                                        </strong>
+                                        <u>đ</u>
+                                    </td>
+                                </tr>
+                            </table>
+                        </p>
+                        @using (Html.BeginForm("ThemDatTour", "datTour", new { @id = Model.Id, @strURL = Request.Url.ToString() }))
+                        {
+                            <input type="submit" value="Đặt Tour" id="bgnGioHang" class="btn btn-sm btn-outline-primary" />
+                        }
+
+                    </div>
+                </div>
+                <br /><br /><br />
+                <img class="img-fluid w-50 float-left mr-4 mb-2" src="@Html.DisplayFor(model => model.HinhAnhTour2)">
+                <h4 class="mb-3">Lịch khởi hành</h4>
+                <p>
+                    @Html.Raw(Model.LichKhoiHanh)
+                </p>
+                <h5 class="mb-3"> GIÁ BAO GỒM</h5>
+                <img class="img-fluid w-50 float-right ml-4 mb-2" src="@Html.DisplayFor(model => model.HinhAnhTour3)">
+                <p>
+                    @Html.Raw(Model.GiaBaoGom)
+                </p>
+                <h5 class="mb-3">GIÁ KHÔNG BAO GỒM</h5>
+                <p>
+                    @Html.Raw(Model.GiaKBaoGom)
+                </p>
+                <p>
+                    @Html.DisplayFor(model => model.PhuThu)
+                </p>
+                <h5 class="mb-3">Lưu ý</h5>
+                <p>
+                    @Html.Raw(Model.LuuY)
+                </p>
+                <p>
+                    @Html.ActionLink("Trở Lại", "Index")
+                </p>
+                @using (Html.BeginForm("ThemDatTour", "datTour", new { @id = Model.Id, @strURL = Request.Url.ToString() }))
+                {
+                    <input type="submit" value="Đặt Tour" id="bgnGioHang" class="btn btn-primary mt-1" />
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/donvitien.js"></script>
+

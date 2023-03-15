@@ -1,0 +1,47 @@
+﻿@model IEnumerable<WebsiteDuLich.Models.LienHe>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/ad_Layout.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <th style="border: 1px solid #A9A9A9 ; text-align:center">
+            @Html.DisplayNameFor(model => model.HoTenLH)
+        </th>
+        <th style="border: 1px solid #A9A9A9 ; text-align:center">
+            @Html.DisplayNameFor(model => model.EmailLH)
+        </th>
+        <th style="border: 1px solid #A9A9A9 ; text-align:center">
+            @Html.DisplayNameFor(model => model.ChuDeLH)
+        </th>
+        <th style="border: 1px solid #A9A9A9 ; text-align:center">
+            @Html.DisplayNameFor(model => model.NoiDungLH)
+        </th>
+        <th style="border: 1px solid #A9A9A9; text-align: center">Action</th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td style="border: 1px solid #A9A9A9; text-align: center">
+        @Html.DisplayFor(modelItem => item.HoTenLH)
+    </td>
+    <td style="border: 1px solid #A9A9A9; text-align: center">
+        @Html.DisplayFor(modelItem => item.EmailLH)
+    </td>
+    <td style="border: 1px solid #A9A9A9; text-align: center">
+        @Html.DisplayFor(modelItem => item.ChuDeLH)
+    </td>
+    <td style="border: 1px solid #A9A9A9; text-align: center">
+        @Html.DisplayFor(modelItem => item.NoiDungLH)
+    </td>
+    <td style="border: 1px solid #A9A9A9; text-align: center">
+      
+        @Html.Raw(@Html.ActionLink("[replacetext]", "Details", new { id = item.Id }).ToHtmlString().Replace("[replacetext]", " <img src=\"/images/images/icons8-view-details-48.png\" height=\"25\">"))
+        @Html.Raw(@Html.ActionLink("[replacetext]", "Delete", new { id = item.Id }).ToHtmlString().Replace("[replacetext]", " <img src=\"/images/images/icons8-delete-document-48.png\" height=\"25\">"))
+    </td>
+</tr>
+}
+
+</table>

@@ -1,0 +1,147 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>DIDULICH</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+    @*@Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
+    <!-- Favicon -->
+    <link href="~/clienttemplate/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="~/clienttemplate/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="~/clienttemplate/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="~/clienttemplate/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--  -->
+    @{ var u = Session["use"] as WebsiteDuLich.Models.Nguoidung; }
+    <div class="container-fluid bg-light pt-3 d-none d-lg-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
+                    <div class="d-inline-flex align-items-center">
+                        <p><i class="fa fa-envelope mr-2"></i>dulich@gmail.com</p>
+                        <p class="text-body px-3">|</p>
+                        <p><i class="fa fa-phone-alt mr-2"></i>+012 345 6789</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center text-lg-right">
+                    <div class="d-inline-flex align-items-center ">
+                        @* @Html.Partial("_LoginPartial")*@
+                        @{ if (u != null)
+                            {
+                                <div class="col-sm-12 col-md-0">
+                                    Xin chào : @u.Hoten
+                                    &nbsp;
+                                    @*@Html.ActionLink("ĐĂNG XUẤT", "DangXuat", "User", new { style = "color:red" })*@
+                                    <a style="color:red" href="/User/DangXuat"> ĐĂNG XUẤT</a>
+                                </div> }
+                            else
+                            {
+                                <div class="col-sm-12 col-md-0">
+                                    <a style="color:black" href="/User/Dangky"> Đăng ký</a>
+                                    &nbsp;
+                                    <a style="color:black" href="/User/Dangnhap"> Đăng nhập</a>
+                                </div> } }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Menu -->
+    <div class="container-fluid position-relative nav-bar p-0">
+        <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+            <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
+                <a href="" class="navbar-brand">
+                    <h1 class="m-0 text-primary"><span class="text-dark">DU LI</span>CH</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="~/Home" class="nav-item nav-link">TRANG CHỦ</a>
+                        <a href="~/tour" class="nav-item nav-link">TOUR</a>
+                        <a href="~/tinTuc" class="nav-item nav-link">TIN TỨC</a>
+                        <a href="~/gioiThieu" class="nav-item nav-link">GIỚI THIỆU</a>
+                        <a href="~/lienHe/Create" class="nav-item nav-link active">LIÊN HỆ</a>
+
+
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- banner -->
+    <div class="container-fluid page-header">
+        @{ Html.RenderAction("banner", "headerBanner");}
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+                <h3 class="display-6 text-white text-uppercase" style="font-family: 'Courier New', monospace ">"HÃY CÙNG NHAU KHÁM PHÁ"</h3>
+                <div class="d-inline-flex text-white">
+                    <p class="m-0 text-uppercase"><a class="text-white" href="~/tour">TOUR</a></p>
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    @*<p class="m-0 text-uppercase">Packages</p>*@
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- body -->
+    <div class="container-fluid">
+        <div class="container">
+            @RenderBody()
+
+        </div>
+    </div>
+
+    <!-- Footer-->
+    <div class="container-fluid bg-dark text-white-50 py-2 px-sm-3 px-lg-5" style="margin-top: 5px;">
+        <div class="row pt-2">
+            <div class="col-lg-12 col-md-6 mb-2">
+                @{Html.RenderAction("footer", "footer");}
+            </div>
+        </div>
+    </div>
+
+
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="~/clienttemplate/lib/easing/easing.min.js"></script>
+    <script src="~/clienttemplate/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="~/clienttemplate/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="~/clienttemplate/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="~/clienttemplate/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="~/clienttemplate/mail/jqBootstrapValidation.min.js"></script>
+    <script src="~/clienttemplate/mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")*@
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>

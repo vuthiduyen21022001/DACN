@@ -1,0 +1,120 @@
+﻿@model PagedList.IPagedList<WebsiteDuLich.Models.TinTuc>
+
+
+@{
+    ViewBag.Title = "Tin Tức Du Lịch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<head>
+    <style>
+        p.test2 {
+            white-space: nowrap;
+            width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <h2 class="text-center text-primary">TIN TỨC DU LỊCH</h2>
+        <br />
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row pb-3">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-6 mb-4 pb-2">
+                            <div class="blog-item">
+                                <div class="position-relative">
+                                    <img class="img-fluid w-100" src="@item.AnhTieuDe" alt="" style="min-width: 100%; max-width: 100%; max-height: 150px ">
+                                    <div class="blog-date">
+                                        <h6 class="font-weight-bold mb-n1">@item.TgDang.ToString("MM")</h6>
+                                        <small class="text-white text-uppercase">@item.TgDang.ToString("yyyy")</small>
+                                    </div>
+                                </div>
+                                <div class="bg-white p-4">
+                                    <div class="d-flex mb-2">
+                                        <a class="text-primary text-uppercase text-decoration-none" href="@Url.Action("Details", "tinTuc", new { id=item.Id })">@item.TieuDe</a>
+                                    </div>
+                                    <a class="text-primary text-uppercase text-decoration-none" href="@Url.Action("Details", "tinTuc", new { id=item.Id })" style="font-size:11px; margin-top:12px; text-align:right">@item.NguoiDang</a>
+                                    <span class="text-primary px-2" style="text-align:right">|</span>
+                                    <a class="text-primary text-uppercase text-decoration-none" href="" style="font-size: 11px; margin-top: 12px; text-align: right">@item.TgDang.ToString("dd/MM/yyyy")</a>
+                                    <br /><br />
+                                    <a class="h5 m-0 text-decoration-none" href="@Url.Action("Details", "tinTuc", new { id=item.Id })">
+                                        <p class="test2">
+                                            @item.MoTa
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+                <div style="text-align:right">
+                    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+                </div>
+            </div>
+
+            <div class="col-lg-4 mt-5 mt-lg-0">
+                <!-- Tim Kiem -->
+                <div class="mb-5">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="bg-white" style="padding: 30px;">
+                            <b style="font-size:12pt">Tìm kiếm</b><br />
+                            @Html.TextBox("SearchString")
+                            <button> <img src="~/images/images/icons8-search-48.png" height="20" width="20" /> </button>
+                        </div>
+                    }
+                </div>
+                <!-- Danh muc -->
+                <div class="mb-5">
+                    <h4 class="text-uppercase mb-4" style="letter-spacing: 5px;">DANH MỤC</h4>
+                    <div class="bg-white" style="padding: 30px;">
+                        <ul class="list-inline m-0">
+                            <li class="mb-3 d-flex justify-content-between align-items-center">
+                                <a class="text-dark" href="~/Home">
+                                    <i class="fa fa-angle-right text-primary mr-2"></i>
+                                    Trang chủ
+                                </a>
+
+                            </li>
+                            <li class="mb-3 d-flex justify-content-between align-items-center">
+                                <a class="text-dark" href="~/tour">
+                                    <i class="fa fa-angle-right text-primary mr-2"></i>
+                                    Tour du lịch
+                                </a>
+
+                            </li>
+                            <li class="mb-3 d-flex justify-content-between align-items-center">
+                                <a class="text-dark" href="~/tinTuc">
+                                    <i class="fa fa-angle-right text-primary mr-2"></i>
+                                    Tin Tức
+                                </a>
+
+                            </li>
+                            <li class="mb-3 d-flex justify-content-between align-items-center">
+                                <a class="text-dark" href="~/gioiThieu">
+                                    <i class="fa fa-angle-right text-primary mr-2"></i>Giới Thiệu
+                                </a>
+
+                            </li>
+                            <li class="mb-3 d-flex justify-content-between align-items-center">
+                                <a class="text-dark" href="~/lienHe/Create">
+                                    <i class="fa fa-angle-right text-primary mr-2"></i>Liên Hệ
+                                </a>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

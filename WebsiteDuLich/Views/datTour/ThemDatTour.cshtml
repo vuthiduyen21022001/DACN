@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Đặt tour";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using WebsiteDuLich.Models;
+@model List<DatTour>
+<script src="~/Scripts/donvitien.js"></script>
+@{
+    Nguoidung kh = (Nguoidung)Session["use"];
+}
+<div class="container-fluid py-2">
+    <div class="container pt-2">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-6" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100" src="@Url.Content("" +item.hinh)" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-6 pt-5 pb-lg-5">
+                    <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
+                        <div>
+                            @using (Html.BeginForm())
+                            {
+                                @Html.ValidationSummary(true)
+                                <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Thông tin đặt tour</h4><br>
+                                <span> Họ tên khách hàng: @kh.Hoten</span><br /><br />
+                                <span> Số điện thoại: @kh.Dienthoai</span><br /><br />
+                                <span> Email: @kh.Email</span><br /><br />
+                                <span> Địa Chỉ: @kh.Diachi</span><br /><br />
+                                <span> Ngày đặt: @String.Format("{0:dd/MM/yyyy}", DateTime.Now.ToShortDateString())</span><br /><br />
+                            }
+                        </div>
+                        <br /><h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Đặt Tour</h4>
+                        <h1 class="mb-3">@item.ten</h1>
+                        <div>
+                            <span>Giá gốc: </span>
+                            <span class="donvi">@item.dGiaChuaKM</span>
+                            <u>đ</u>
+                        </div>
+                        <br />
+                        <div>
+                            <span>Khuyến mãi: </span>
+                            <span class="donvi">@item.dGiamGia</span>
+                            <u>đ</u>
+                        </div>
+                        <hr />
+                        <strong>
+
+                            <span>Thành tiền: </span>
+                            <span class="donvi">@item.ThanhTien</span>
+                            <u>đ</u>
+                        </strong>
+                        <div class="row mb-4">
+                            <div class="col-6">
+                                <img class="img-fluid" src="img/about-1.jpg" alt="">
+                            </div>
+                            <div class="col-6">
+                                <img class="img-fluid" src="img/about-2.jpg" alt="">
+                            </div>
+                        </div>
+                        @*<a href="" class="btn btn-primary mt-1">Book Now</a>*@
+                        @using (Html.BeginForm("DatTour", "datTour", new { @class = "" }))
+                        {
+                            <input type="submit" value="Đặt Ngay" class="btn btn-primary mt-1" />
+                        }
+                        <div style="height:100px">
+                            <i><a style="font-size: 11pt" href="@Url.Action("Payment","datTour")">Thanh toán online</a></i>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>

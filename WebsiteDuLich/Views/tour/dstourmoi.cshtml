@@ -1,0 +1,28 @@
+﻿@model IEnumerable<WebsiteDuLich.Models.Tour>
+
+@{
+    ViewBag.Title = "dstourmoi";
+}
+<div class="text-center mb-3 pb-3">
+    <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">TOUR</h6>
+    <h1>Tour hot</h1>
+</div>
+<div class="owl-carousel testimonial-carousel">
+    @foreach (var item in Model)
+    {
+        <div class="text-center pb-4">
+            <img class="img-fluid mx-auto" src="@item.HinhAnhTour" style="width: 230px; height: 170px;">
+            <div class="testimonial-text bg-white p-4 mt-n5">
+                <p class="mt-5">
+                    @Html.Raw(item.LichTrinh)
+                    <a class="btn btn-success" href="@Url.Action("ThemDatTour", "datTour", new { @id = item.Id, @strURL = Request.Url.ToString() })">
+                        Đặt Tour
+                    </a>
+                </p>
+                <h5 class="text-truncate"><a class="h5 text-decoration-none" href="@Url.Action("Details", "tour", new { id=item.Id })">@item.TenTour</a></h5>
+                <span class="donvi">@item.Giaban</span>
+                <u>đ</u>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,35 @@
+﻿@model WebsiteDuLich.Models.GioiThieu
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/ad_Layout.cshtml";
+}
+
+<h2>Chi tiết</h2>
+
+<div>
+    <h4>Giới thiệu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayDang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiDunggt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDunggt)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.Id }) <br />
+    @Html.Raw(@Html.ActionLink("[replacetext]", "Index").ToHtmlString().Replace("[replacetext]", " <img src=\"/images/images/icons8-back-arrow-96.png\" height=\"45\">"))
+</p>

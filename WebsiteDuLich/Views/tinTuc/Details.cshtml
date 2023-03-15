@@ -1,0 +1,48 @@
+﻿@model WebsiteDuLich.Models.TinTuc
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <h2 class="text-center text-primary">TIN TỨC DU LỊCH</h2> <br />
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="pb-3">
+                    <div class="blog-item">
+                        <div class="position-relative">
+                            <img class="img-fluid w-100" src="@Model.AnhTieuDe" alt="ảnh tiêu đề">
+                            <div class="blog-date">
+                                <h6 class="font-weight-bold mb-n1">@Model.TgDang.ToString("MM")</h6>
+                                <small class="text-white text-uppercase">@Model.TgDang.ToString("yyyy")</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white mb-3" style="padding: 30px; text-align: justify">
+                        <div class="d-flex mb-2">
+                            <a class="text-primary text-uppercase text-decoration-none" href="">@Model.NguoiDang</a>
+
+                            <p class="text-primary" style="margin-left:300px;font-size:11px">@Model.TgDang.ToString("dd/MM/yyyy")</p>
+                        </div>
+                        <hr />
+                        <h2 class="mb-3">@Model.TieuDe</h2>
+                        <p>
+                            @Model.MoTa
+                        </p>
+                        <hr />
+                        <p style="text-align:justify">
+                            @Html.Raw(Model.NoiDung)
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <p>
+                @Html.ActionLink("Trở lại", "Index")
+            </p>
+        </div>
+    </div>
+</div>

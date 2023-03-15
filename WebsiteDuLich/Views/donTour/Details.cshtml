@@ -1,0 +1,43 @@
+﻿@model WebsiteDuLich.Models.DonTour
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chi tiết</h2>
+
+<div>
+    <h4>Đơn tour</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nguoidung.Hoten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nguoidung.Hoten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ngaydat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngaydat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tinhtrang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tinhtrang)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.Raw(@Html.ActionLink("[replacetext]", "Index").ToHtmlString().Replace("[replacetext]", " <img src=\"/images/images/icons8-back-arrow-96.png\" height=\"45\">"))
+</p>

@@ -1,0 +1,19 @@
+﻿@model IEnumerable<WebsiteDuLich.Models.DanhMuc>
+
+
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="destination-item position-relative overflow-hidden mb-2">
+                <img class="img-fluid" src="~/images/images/background-du-lich-bau-troi_110850711.jpg" alt="Ảnh danh mục">
+                <a href="@Url.Action("TourTheoDanhMuc","tour",new { id = item.Id})" class="destination-overlay text-white text-decoration-none list-group-item">
+
+                    @Html.DisplayFor(modelItem => item.TenDM)
+                </a>
+            </div>
+        </div>
+
+    }
+</div>

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<WebsiteDuLich.Models.Footer>
+
+@{
+    ViewBag.Title = "footer";
+}
+
+<div class="container-fluid bg-dark text-white-50 py-2 px-sm-3 px-lg-5" style="margin-top: 2px;">
+    <div class="row pt-2">
+            @foreach (var item in Model)
+            {
+                @*<div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 2px;">*@
+                    <div class="row ">
+                        <div class="col-lg-3 col-md-6 mb-5">
+                            <img src="@item.Logo" style="height: 150px;" />
+                        </div>
+                        <div class="col-lg-9 col-md-6 mb-5" style="text-align:justify">
+                            @*<h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">DU LịCH</h5>*@
+                            @*<div class="d-flex flex-column justify-content-start">*@
+                                @Html.Raw(item.NoiDung)
+                            @*</div>*@
+                        </div>
+                    </div>
+                @*</div>*@
+                @*</div>*@
+            }
+    </div>
+</div>
+<div class="container-fluid bg-dark text-white border-top px-sm-3 px-md-5" style="border-color: rgba(256, 256, 256, .1) !important;">
+    <div class="row">
+        <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
+            <p class="m-0 text-white-50">
+            <p>&copy; @DateTime.Now.Year - Du Lich</p>
+        </div>
+        <div class="col-lg-6 text-center text-md-right">
+            <i class="m-0 text-white" style="font-size:10px">
+                Designed by MinhChiến-VũDuyên-BảoChâu
+            </i>
+        </div>
+    </div>
+</div>

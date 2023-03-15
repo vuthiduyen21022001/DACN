@@ -1,0 +1,57 @@
+﻿@model WebsiteDuLich.Models.LienHe
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/ad_Layout.cshtml";
+}
+
+<h2>Xóa</h2>
+
+
+<div>
+    <h4>Liên hệ</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HoTenLH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTenLH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailLH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailLH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChuDeLH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChuDeLH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiDungLH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDungLH)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="Xóa" class="btn btn-default" /> |
+    @Html.Raw(@Html.ActionLink("[replacetext]", "Index").ToHtmlString().Replace("[replacetext]", " <img src=\"/images/images/icons8-back-arrow-96.png\" height=\"45\">"))
+</div>
+    }
+</div>
